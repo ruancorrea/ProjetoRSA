@@ -1,6 +1,6 @@
 from construindoChaves import InfoChaves
 from criptografia import encriptando, decriptando
-from Verificacao import verificacaoInicial
+from verificacao import verificacaoInicial, gerandoNumPrimo
 
 entrada = -1
 while(entrada != 0):
@@ -9,12 +9,19 @@ while(entrada != 0):
     
     if entrada == 1:
         while True:
+            print("Caso p=0 ou q=0, então será gerado um número primo no intervalo 2^9 a 2^10 tal p=0 ou q=0")
             p = int(input("Digite um número primo P: "))
             q = int(input("Digite um número primo Q: "))
+
+            if p == 0:
+                p = gerandoNumPrimo()
+            if q == 0:
+                q = gerandoNumPrimo()
             verificacao = verificacaoInicial(p,q)
             if verificacao[0]:
                 break
             else: print(verificacao[1])
+        print(f"p={p} / q={q}")
         n, e, d, totiente = InfoChaves(p,q)
 
         chavePublica = open("chavePublica.txt", "w")

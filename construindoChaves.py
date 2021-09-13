@@ -1,4 +1,4 @@
-from Verificacao import MDC, verificacaoInicial
+from verificacao import MDC
 
 def totiente(p, q):
     return (p - 1) * (q - 1)
@@ -31,18 +31,14 @@ def inverso_mob(a, b):
 
 
 def InfoChaves(p, q):
-    if verificacaoInicial(p,q)[0]:
-        funcTotiente = totiente(p,q)
-        n = p*q
-        print("n",n)
-        print("funcTotiente",funcTotiente)
-        i = 1
-        d = -1
-    while d == -1 and i < funcTotiente:
+    funcTotiente = totiente(p,q)
+    n = p*q
+    i = 1
+    d = -1
+
+    while d < 1 and i < funcTotiente:
         e = achandoE(funcTotiente, i)
         d = inverso_mob(e,funcTotiente)
         i += 1
-        print("e", e)
-        print("d", d)
     
     return n, e , d, funcTotiente
