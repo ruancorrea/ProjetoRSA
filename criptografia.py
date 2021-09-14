@@ -16,11 +16,24 @@ dicionario_decript = {2: "a", 3: "b", 4: "c", 5: "d",
               22: "u", 23: "v", 24: "w", 25: "25",
               26: "y", 27: "z", 28: " "}
 
+def pot(x, y, p):
+    res = 1
+    x = x % p
+    if (x == 0):
+        return 0
+    while (y > 0):
+        if ((y & 1) == 1):
+            res = (res * x) % p
+        y = y >> 1
+        x = (x * x) % p
+         
+    return res
+
 def encriptando(m, e, n):
     cript = ""
     print(m)
     for i in range(len(m)):
-        res = int(dicionario_encript[m[i]])**e % n
+        res = pot(int(dicionario_encript[m[i]]), e, n)
         cript += str(res) + " "
     return cript
 
@@ -28,6 +41,6 @@ def encriptando(m, e, n):
 def decriptando(m, d, n):
     decript = ""
     for i in range(len(m)):
-        res = dicionario_decript[int(m[i])**d % n]
+        res = dicionario_decript[pot(int(m[i]),d,n)]
         decript += res
     return decript

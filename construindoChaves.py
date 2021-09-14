@@ -1,4 +1,4 @@
-from verificacao import MDC
+from Verificacao import MDC
 
 def totiente(p, q):
     return (p - 1) * (q - 1)

@@ -1,6 +1,6 @@
 from construindoChaves import InfoChaves
 from criptografia import encriptando, decriptando
-from verificacao import verificacaoInicial, gerandoNumPrimo
+from Verificacao import verificacaoInicial, gerandoNumPrimo
 
 entrada = -1
 while(entrada != 0):
