@@ -1,6 +1,6 @@
 from construindoChaves import InfoChaves
 from criptografia import encriptando, decriptando
-from Verificacao import verificacaoInicial, gerandoNumPrimo
+from verificacao import verificacaoInicial, gerandoNumPrimo
 
 entrada = -1
 while(entrada != 0):
@@ -9,13 +9,13 @@ while(entrada != 0):
     
     if entrada == 1:
         while True:
-            print("Caso p=0 ou q=0, então será gerado um número primo no intervalo 2^9 a 2^10 tal p=0 ou q=0")
+            print("Caso p<2 ou q<2, então será gerado um número primo no intervalo 2^21 a 2^27")
             p = int(input("Digite um número primo P: "))
             q = int(input("Digite um número primo Q: "))
 
-            if p == 0:
+            if p < 2:
                 p = gerandoNumPrimo()
-            if q == 0:
+            if q < 2:
                 q = gerandoNumPrimo()
             verificacao = verificacaoInicial(p,q)
             if verificacao[0]:
@@ -54,7 +54,7 @@ while(entrada != 0):
         for linha in chavePrivada:
             n,d = linha.split(",")
         chavePrivada.close()        
-        print("Chave pública encontrada.")
+        print("Chave privada encontrada.")
         m = open("mensagemCriptografada.txt",'r')
         for linha in m:
             encript = linha.split()
@@ -62,4 +62,4 @@ while(entrada != 0):
         mensagemDecriptografada = open("mensagemDecriptografada.txt", "w")
         mensagemDecriptografada.write(decript)
         mensagemDecriptografada.close()
-        print("Mensagem criptografada com sucesso! Armazenada no arquivo mensagemDecriptografada.txt.")
+        print("Mensagem decriptografada com sucesso! Armazenada no arquivo mensagemDecriptografada.txt.")

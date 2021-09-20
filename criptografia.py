@@ -29,6 +29,7 @@ def pot(x, y, p):
          
     return res
 
+
 def encriptando(m, e, n):
     cript = ""
     print(m)
